@@ -6,6 +6,6 @@
 
 ## 使用
 
-1. 在`env/config.yml`中设置基本信息
-2. 在`bin`中运行相应程序 or 自己编译运行`src/main.go`
+在`env/config.yml`中设置基本信息
+
 
