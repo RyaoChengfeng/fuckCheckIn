@@ -5,3 +5,15 @@ user:
 location:
   lat: ""
   lng: ""
+
+logconf:
+  logpath: "../log"
+  logfilename: "checkin.log"
+
+timeconf:
+  start_hour: 13
+  start_min: 59
+  start_next_day: 7 #天
+  duration: 120 #分钟
+
+debug: true

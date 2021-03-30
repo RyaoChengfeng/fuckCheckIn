@@ -20,6 +20,9 @@ var C *Config
 type Config struct {
 	User     user     `yaml:"user"`
 	Location location `yaml:"location"`
+	LogConf  logConf  `yaml:"logconf"`
+	TimeConf timeConf `yaml:"timeconf"`
+	Debug    bool     `yaml:"debug"`
 }
 
 type user struct {
@@ -30,6 +33,18 @@ type user struct {
 type location struct {
 	Lat string `yaml:"lat"`
 	Lng string `yaml:"lng"`
+}
+
+type logConf struct {
+	LogPath     string `yaml:"logpath"`
+	LogFileName string `yaml:"logfilename"`
+}
+
+type timeConf struct {
+	StartHour    int `yaml:"start_hour"`
+	StartMin     int `yaml:"start_min"`
+	StartNextDay int `yaml:"start_next_day"`
+	Duration     int `yaml:"duration"`
 }
 
 type Class struct {

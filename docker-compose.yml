@@ -9,7 +9,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       # - ./src:/app
       - ./env:/env
-      #  - ./log:/app/log
+      - ./log:/log
     container_name: yunbankeCheckIn_app
     networks:
       - yunbankeCheckIn

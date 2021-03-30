@@ -3,19 +3,19 @@ package controller
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"src/config"
+	"src/util/log"
 )
 
 func HandleGetUserCourses(rsp *http.Response) []config.Class {
 	content, _ := ioutil.ReadAll(rsp.Body)
 	//rspBody := string(content)
-	//fmt.Println(rspBody)
+	log.Logger.Debug(string(content))
 	r := make(map[string]interface{})
 	jsonErr := json.Unmarshal(content, &r)
 	if jsonErr != nil {
-		log.Fatalln(jsonErr)
+		log.Logger.Fatalln(jsonErr)
 	}
 	AllClass := r["rows"].([]interface{})
 	var Classes []config.Class

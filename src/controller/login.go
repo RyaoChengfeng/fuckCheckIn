@@ -3,19 +3,19 @@ package controller
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"src/config"
+	"src/util/log"
 )
 
 func HandleLogin(rsp *http.Response) config.UserInfo {
 	content, _ := ioutil.ReadAll(rsp.Body)
 	//rspBody := string(content)
-	//fmt.Println(rspBody)
+	log.Logger.Debug(string(content))
 	r := make(map[string]interface{})
 	jsonErr := json.Unmarshal(content, &r)
 	if jsonErr != nil {
-		log.Fatalln(jsonErr)
+		log.Logger.Fatalln(jsonErr)
 	}
 
 	userinfo := config.UserInfo{

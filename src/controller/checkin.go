@@ -2,10 +2,9 @@ package controller
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
+	"src/util/log"
 )
 
 //func HandleGetCheckInList(rsp *http.Response) string {
@@ -23,12 +22,12 @@ import (
 
 func HandleIsCheckInOpen(rsp *http.Response) (bool,string) {
 	content, _ := ioutil.ReadAll(rsp.Body)
-	rspBody := string(content)
-	fmt.Println(rspBody)
+	//rspBody := string(content)
+	log.Logger.Debug(string(content))
 	r := make(map[string]interface{})
 	jsonErr := json.Unmarshal(content, &r)
 	if jsonErr != nil {
-		log.Fatalln(jsonErr)
+		log.Logger.Fatalln(jsonErr)
 	}
 	rst:= int(r["result_code"].(float64))
 	msg := r["result_msg"].(string)
@@ -41,12 +40,12 @@ func HandleIsCheckInOpen(rsp *http.Response) (bool,string) {
 
 func HandleCheckIn(rsp *http.Response) (bool,string) {
 	content, _ := ioutil.ReadAll(rsp.Body)
-	rspBody := string(content)
-	fmt.Println(rspBody)
+	//rspBody := string(content)
+	log.Logger.Infoln(string(content))
 	r := make(map[string]interface{})
 	jsonErr := json.Unmarshal(content, &r)
 	if jsonErr != nil {
-		log.Fatalln(jsonErr)
+		log.Logger.Fatalln(jsonErr)
 	}
 	rst:=int(r["result_code"].(float64))
 	msg:=r["result_msg"].(string)
